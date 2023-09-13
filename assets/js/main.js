@@ -47,6 +47,56 @@ $(document).ready(function(){
 });
 /* Hover Menu */ 
 
+/* Sending a form */
+
+const btn = document.querySelector('.feedback__form__btn');
+btn.onclick = (e) => {
+  e.preventDefault()
+  let x = document.querySelector('#firstname').value
+  if (x === "") {
+          document.querySelector('.feedback__form--error').textContent = "Укажите Ваше имя";
+          return false;
+  }
+  x =  document.querySelector('#email').value;
+  if (x === "") {
+    document.querySelector('.feedback__form--error').textContent = "Укажите Ваш E-mail";
+      return false;
+    } else {
+          let re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+          if(!re.test(x)){
+              document.querySelector('.feedback__form--error').textContent = "Некорректный E-mail";
+              return false;
+          }
+      }
+  x = document.querySelector('#message').value
+  if (x === "") {
+          document.querySelector('.feedback__form--error').textContent = "Напишите Ваше сообщение";
+          return false;
+  }
+  const params = new FormData(document.querySelector('.feedback__form'))
+  
+  fetch('../wp-content/themes/xt/mail.php', {
+    method: 'POST',
+    body: params
+  }).then(
+    response => {
+      return response.text()
+  }).then(
+    () => {
+      document.querySelector('.feedback__form--error').textContent = ''
+      document.querySelector('.feedback__form--error').classList.remove('feedback__form__message--error');
+      document.querySelector('.feedback__form--error').textContent = 'Сообщение успешно отправлено. Специалист свяжется с Вами через несколько минут';
+      setTimeout( function(){ 
+        document.querySelector('.feedback__form').reset()
+        document.querySelector('.feedback__form--error').textContent = '';
+        document.querySelector('.feedback__form--error').classList.add('feedback__form__message--error');
+      }, 10000)
+  }
+  )
+}
+
+/* Sending a form */
+
 $(document).ready(function() {
   $('.jobs__box__items__link').click(function (e) {
     e.preventDefault();

@@ -14,11 +14,12 @@
                     </div>
                 </div>
                 <div class="feedback__form__items">
-                    <textarea class="feedback__form__textarea" name="message" id="" cols="30" rows="10" placeholder="Введите текст..."></textarea>
+                    <textarea class="feedback__form__textarea" name="message" id="message" cols="30" rows="10" placeholder="Введите текст..."></textarea>
                 </div>
                 <div class="feedback__form__items">
                     <button class="feedback__form__btn" type="submit">Отправить</button>
                 </div>
+                <p class="feedback__form__message feedback__form__message--error feedback__form--error"></p>
             </form>
         </div>
     </section>
