@@ -167,6 +167,14 @@ function defer_parsing_of_js( $url ) {
 }
 add_filter( 'script_loader_tag', 'defer_parsing_of_js', 10 );
 
+function disable_gutenberg_wp_enqueue_scripts() {
+      
+	wp_dequeue_style('wp-block-library');
+	wp_dequeue_style('wp-block-library-theme');
+	 
+}
+add_filter('wp_enqueue_scripts', 'disable_gutenberg_wp_enqueue_scripts', 100);
+
 /**
  * Implement the Custom Header feature.
  */

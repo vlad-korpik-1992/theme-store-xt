@@ -10,7 +10,7 @@
                 <div class="footer__box__items">
                     <ul class="footer__menu__list">
                         <li class="footer__menu__list__items">
-                            <a class="footer__link" href="#">О нас</a>
+                            <a class="footer__link" href="<?php echo get_page_link(12)?>">О нас</a>
                         </li>
                         <li class="footer__menu__list__items">
                             <a class="footer__link" href="#">Команда</a>
@@ -32,7 +32,7 @@
         <img class="menu-modal__img--shop" loading="lazy" src="<?php bloginfo('template_url'); ?>/assets/img/modal__menu__basket.png" alt="">
     </section>
     <section class="menu-modal menu-modal--donat section--full">
-        <a href="https://yandex.by/" loading="lazy" class="menu-modal__link menu-modal__link--donat">Донаты</a>
+        <a href="<?php echo get_page_link(24)?>" loading="lazy" class="menu-modal__link menu-modal__link--donat">Донаты</a>
         <img class="menu-modal__img--shop" src="<?php bloginfo('template_url'); ?>/assets/img/modal__menu__donat.png" alt="">
     </section>
 	<?php wp_footer(); ?>

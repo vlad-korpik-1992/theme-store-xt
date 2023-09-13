@@ -32,7 +32,7 @@
                         <a class="menu__list__link" href="#">Онлайн магазин</a>
                     </li>
                     <li class="menu__list__items menu-open-donat">
-                        <a class="menu__list__link" href="#">Донаты</a>
+                        <a class="menu__list__link" href="<?php echo get_page_link(24)?>">Донаты</a>
                     </li>
                 </ul>
             </nav>
