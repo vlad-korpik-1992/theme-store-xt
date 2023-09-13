@@ -16,7 +16,7 @@
                             <a class="footer__link" href="#">Команда</a>
                         </li>
                         <li class="footer__menu__list__items">
-                            <a class="footer__link" href="#">Вакансии</a>
+                            <a class="footer__link" href="<?php echo get_page_link(44)?>">Вакансии</a>
                         </li>
                     </ul>
                 </div>
