@@ -175,6 +175,15 @@ function disable_gutenberg_wp_enqueue_scripts() {
 }
 add_filter('wp_enqueue_scripts', 'disable_gutenberg_wp_enqueue_scripts', 100);
 
+add_filter( 'login_errors', function($errors){
+	global $errors;
+	$error_codes = $errors->get_error_codes();
+	if( in_array('incorrect_password', $error_codes) || (in_array('invalid_username', $error_codes)) ){
+		$error = '<strong>Ошибка:</strong> Неправильное имя пользователя или пароль';
+	}
+	return $error;
+});
+
 /**
  * Implement the Custom Header feature.
  */
