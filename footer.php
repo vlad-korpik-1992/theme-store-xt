@@ -13,7 +13,7 @@
                             <a class="footer__link" href="<?php echo get_page_link(12)?>">О нас</a>
                         </li>
                         <li class="footer__menu__list__items">
-                            <a class="footer__link" href="#">Команда</a>
+                            <a class="footer__link" href="<?php echo get_page_link(67)?>">Команда</a>
                         </li>
                         <li class="footer__menu__list__items">
                             <a class="footer__link" href="<?php echo get_page_link(44)?>">Вакансии</a>

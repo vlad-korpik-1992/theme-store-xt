@@ -159,6 +159,26 @@ function xt_scripts() {
 }
 add_action( 'wp_enqueue_scripts', 'xt_scripts' );
 
+function create_post_team(){
+    register_post_type('team',
+
+        array(
+                'labels' => array(
+                    'name' => ( 'Команда' ),
+					'singular_name' => ( 'Team' ),
+                    'add_new' => 'Добавить нового сотрудника'
+                ),
+            'menu_position' => 9,
+            'public' => true,
+            'has_archive' => true,
+            'menu_icon'   => 'dashicons-groups',
+			'hierarchical'  => false,
+            'supports' => array('title','editor')
+        )
+    );
+}
+add_action( 'init', 'create_post_team' );
+
 function defer_parsing_of_js( $url ) {
     if ( is_user_logged_in() ) return $url;
     if ( FALSE === strpos( $url, '.js' ) ) return $url;

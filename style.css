@@ -638,7 +638,7 @@ p.video__items__title{
     color: #7A7A7A;
     font-size: 18px;
     font-weight: 400;
-    flex: 1;
+    /*flex: 1;*/
     white-space: nowrap;
 }
 .breadcrumbs__link{
@@ -1429,9 +1429,8 @@ p.video__items__title{
     display: flex;
     font-family: 'Road Rage(RUS BY LYAJKA)';
     font-size: 64px;
-    font-style: normal;
     font-weight: 400;
-    line-height: normal;
+    line-height: 120%;
     padding-bottom: 30px;
 }
 .worker__box__info p{
