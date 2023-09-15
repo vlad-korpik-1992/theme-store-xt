@@ -2035,6 +2035,9 @@ p.video__items__title{
     .school__form__error{
         font-size: 14px;
     }
+    .posters__box__img{
+        height: auto;
+    }
     .events__box__items--mt{
         margin-top: -30px;
     }

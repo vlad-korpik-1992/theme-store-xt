@@ -156,6 +156,15 @@ function xt_scripts() {
 	wp_register_script('main-script', get_template_directory_uri() . '/assets/js/main.js', array(), null, true);
 
 	wp_enqueue_script('main-script');
+
+	if( is_post_type_archive( 'events' ) ) {
+		
+		wp_deregister_script('main-script');
+
+		wp_register_script('main-archive-events-script', get_template_directory_uri() . '/assets/js/main-archive-events.js', array(), null, true);
+
+		wp_enqueue_script('main-archive-events-script');
+	}
 }
 add_action( 'wp_enqueue_scripts', 'xt_scripts' );
 
@@ -168,7 +177,7 @@ function create_post_team(){
 					'singular_name' => ( 'Team' ),
                     'add_new' => 'Добавить нового сотрудника'
                 ),
-            'menu_position' => 9,
+            'menu_position' => 8,
             'public' => true,
             'has_archive' => true,
             'menu_icon'   => 'dashicons-groups',
@@ -178,6 +187,26 @@ function create_post_team(){
     );
 }
 add_action( 'init', 'create_post_team' );
+
+function create_post_events(){
+    register_post_type('events',
+
+        array(
+                'labels' => array(
+                    'name' => ( 'Мероприятия' ),
+					'singular_name' => ( 'Event' ),
+                    'add_new' => 'Добавить новое мероприятие'
+                ),
+            'menu_position' => 9,
+            'public' => true,
+            'has_archive' => true,
+            'menu_icon'   => 'dashicons-tickets',
+			'hierarchical'  => false,
+            'supports' => array('title','editor')
+        )
+    );
+}
+add_action( 'init', 'create_post_events' );
 
 function defer_parsing_of_js( $url ) {
     if ( is_user_logged_in() ) return $url;
