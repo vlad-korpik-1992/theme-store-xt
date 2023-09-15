@@ -165,6 +165,15 @@ function xt_scripts() {
 
 		wp_enqueue_script('main-archive-events-script');
 	}
+
+	if( is_singular( 'events' ) ) {
+		
+		wp_deregister_script('main-script');
+
+		wp_register_script('main-event-page-script', get_template_directory_uri() . '/assets/js/main-event-page.js', array(), null, true);
+
+		wp_enqueue_script('main-event-page-script');
+	}
 }
 add_action( 'wp_enqueue_scripts', 'xt_scripts' );
 

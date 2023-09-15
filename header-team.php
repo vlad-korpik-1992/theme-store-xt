@@ -10,11 +10,17 @@
     <title><?php wp_title("", true); ?></title>
 </head>
 <body>
-    <header class="header">
+    <header class="header <? if( is_singular( 'events' ) ): echo 'header--event-page'; endif; ?>">
         <div class="wrapper">
             <div class="header__top">
                 <a class="logo" href="/">
-                    <img src="<?php bloginfo('template_url'); ?>/assets/img/logo.svg" alt="На Главную">
+                    <?if( is_singular( 'events' ) ):?>
+                        <img id="logo" src="<?php bloginfo('template_url'); ?>/assets/img/logo--white.svg" alt="На Главную">
+                    <?
+                    else:?>
+                        <img src="<?php bloginfo('template_url'); ?>/assets/img/logo.svg" alt="На Главную">
+                    <?
+                    endif;?>
                 </a>
             </div>
         </div>

@@ -40,7 +40,7 @@ if (pageWidth > 992) {
 
 
 if (pageWidth < 992) {
-  document.querySelector("#logo").src = "./img/logo.svg";
+  document.querySelector("#logo").src = "../../wp-content/themes/xt/assets//img/logo.svg";
 }
 
 
