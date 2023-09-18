@@ -14,7 +14,7 @@
                             <a class="school__box__list__link" href="#">Школа</a>
                         </li>
                         <li class="school__box__list__items">
-                            <a class="school__box__list__link" href="#">Видео</a>
+                            <a class="school__box__list__link" href="<?php echo get_page_link(120)?>">Видео</a>
                         </li>
                     </ul>
                 </div>

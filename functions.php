@@ -174,6 +174,14 @@ function xt_scripts() {
 
 		wp_enqueue_script('main-event-page-script');
 	}
+
+	if ( is_page_template('page-video.php')) {
+		wp_deregister_script('main-script');
+
+		wp_register_script('main-page-video-script', get_template_directory_uri() . '/assets/js/main-page-video.js', array(), null, true);
+
+		wp_enqueue_script('main-page-video-script');
+	}
 }
 add_action( 'wp_enqueue_scripts', 'xt_scripts' );
 

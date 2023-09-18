@@ -1526,14 +1526,15 @@ p.video__items__title{
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 10px;
 }
 .video__link__play{
     position: absolute;
 }
 .video__link__logo{
     display: flex;
-    width: 72px;
-    height: 72px;
+    width: 60px;
+    height: 60px;
     border-radius: 50%;
 }
 .video__link__img{
@@ -1544,7 +1545,6 @@ p.video__items__title{
     display: flex;
     font-size: 24px;
     color: #000;
-    padding-left: 10px;
     transition: 0.3s all;
 }
 .video__link:hover span.video__link__title{
@@ -1723,6 +1723,45 @@ p.video__items__title{
 }
 .breadcrumbs__list__link:hover{
     color: #4806fe;
+}
+.modal-video{
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(31, 30, 27, 0.70);
+    z-index: 9999;
+}
+.modal-video--open{
+    display: block;
+}
+.modal-video__content{
+    display: flex;
+    width: 100%;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+}
+.modal-video__content__item{
+    width: 100%;
+    height: calc(100% - 30px);
+    max-width: 100%;
+    max-height: 100%;
+}
+.modal-video__link{
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 99999;
+}
+.modal-video__link svg{
+    width: 64px;
+    height: 64px;
+    fill: #fff;
 }
 @media (min-width: 1199px) {
     .menu-modal--open{
@@ -2625,6 +2664,10 @@ p.video__items__title{
     }
     .single h2, .single h3, .single h4, .single h5, .single h6{
         font-size: 24px;
+    }
+    .modal-video__link svg{
+        width: 32px;
+        height: 32px;
     }
 }
 @media (max-width: 374px){
