@@ -11,7 +11,7 @@
                 <div class="events__box__items">
                     <ul class="school__box__list">
                         <li class="school__box__list__items">
-                            <a class="school__box__list__link" href="#">Школа</a>
+                            <a class="school__box__list__link" href="<?php echo get_page_link(135)?>">Школа</a>
                         </li>
                         <li class="school__box__list__items">
                             <a class="school__box__list__link" href="<?php echo get_page_link(82)?>">Мероприятия</a>

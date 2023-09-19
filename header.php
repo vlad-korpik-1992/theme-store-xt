@@ -26,7 +26,7 @@
                 </a>
                 <ul class="menu__list">
                     <li class="menu__list__items menu-open-one">
-                        <a class="menu__list__link" href="#">Наши проект</a>
+                        <a class="menu__list__link" href="<?php echo get_page_link(135)?>">Наши проекты</a>
                     </li>
                     <li class="menu__list__items menu-open-shop">
                         <a class="menu__list__link" href="#">Онлайн магазин</a>

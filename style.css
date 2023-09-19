@@ -801,9 +801,12 @@ p.video__items__title{
 .school__form__submit:hover{
     background-color: #4806fe;
 }
+.school__form__status{
+    color:#008000;
+    line-height: normal;
+}
 .school__form__error{
     color: #F00;
-    line-height: normal;
 }
 .events__box{
     display: grid;
@@ -1762,6 +1765,11 @@ p.video__items__title{
     width: 64px;
     height: 64px;
     fill: #fff;
+}
+@media (min-width: 768px) {
+    .video__items__img--maxw{
+        max-width: 51%;
+    }
 }
 @media (min-width: 1199px) {
     .menu-modal--open{

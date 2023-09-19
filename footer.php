@@ -24,7 +24,7 @@
         </div>
     </footer>
     <section class="menu-modal menu-modal--one section--full">
-        <a href="https://yandex.by/" class="menu-modal__link">Наши проекты</a>
+        <a href="<?php echo get_page_link(135)?>" class="menu-modal__link">Наши проекты</a>
         <img class="menu-modal__img" loading="lazy" src="<?php bloginfo('template_url'); ?>/assets/img/modal__menu__one.png" alt="">
     </section>
     <section class="menu-modal menu-modal--shop section--full">
