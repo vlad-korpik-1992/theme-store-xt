@@ -21,6 +21,22 @@ function openMenu(event) {
     btnElement.classList.toggle('menu__btn__element--close');
 }
 
+/* Open a video in a modal window */
+$(document).on('click', '.video__link--open', function(e) { 
+  e.preventDefault();
+  let dataLink = $(this).attr('data-link');
+  document.getElementById('video-content').innerHTML = dataLink;
+  const modal = document.querySelector('.modal-video');
+  modal.classList.toggle('modal-video--open');
+})
+function openModal(event) {
+  event.preventDefault()
+  const modal = document.querySelector('.modal-video');
+  modal.classList.toggle('modal-video--open');
+  document.getElementById('video-content').innerHTML = '';
+}
+/* Open a video in a modal window */
+
 /* Hover Menu */ 
 const pageWidth = document.documentElement.scrollWidth
 $(document).ready(function(){
@@ -92,13 +108,4 @@ $(document).ready(function() {
       }
     ]
 	});
-  $('.jobs__box__items__link').click(function (e) {
-    e.preventDefault();
-    let elem = e.target;
-    let id = '1' + elem.getAttribute('id');
-    let idContent = '2' + elem.getAttribute('id');
-    console.log(elem);
-    jQuery("#"+id).toggleClass('content--dn');
-    jQuery("#"+idContent).toggleClass('content--active');
-    });
 })
