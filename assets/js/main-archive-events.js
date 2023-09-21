@@ -44,5 +44,6 @@ $(document).ready(function(){
         $(".menu-modal--donat").removeClass("menu-modal--open");
     });
   }
+  $('span:contains("Товары")').html('Онлайн-магазин');
 });
 /* Hover Menu */ 

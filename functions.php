@@ -202,6 +202,14 @@ function xt_scripts() {
 
 		wp_enqueue_script('main-slider-script');
 	}
+
+	if ( is_shop()){
+		wp_deregister_script('main-script');
+
+		wp_register_script('main-archive-events-script', get_template_directory_uri() . '/assets/js/main-archive-events.js', array(), null, true);
+
+		wp_enqueue_script('main-archive-events-script');
+	}
 }
 add_action( 'wp_enqueue_scripts', 'xt_scripts' );
 

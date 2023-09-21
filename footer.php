@@ -28,7 +28,7 @@
         <img class="menu-modal__img" loading="lazy" src="<?php bloginfo('template_url'); ?>/assets/img/modal__menu__one.png" alt="">
     </section>
     <section class="menu-modal menu-modal--shop section--full">
-        <a href="https://yandex.by/" class="menu-modal__link menu-modal__link--shop">Онлайн-магазин</a>
+        <a href="<?php echo get_page_link(299)?>" class="menu-modal__link menu-modal__link--shop">Онлайн-магазин</a>
         <img class="menu-modal__img--shop" loading="lazy" src="<?php bloginfo('template_url'); ?>/assets/img/modal__menu__basket.png" alt="">
     </section>
     <section class="menu-modal menu-modal--donat section--full">

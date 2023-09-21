@@ -17,7 +17,7 @@
                     <img src="<?php bloginfo('template_url'); ?>/assets/img/logo.svg" alt="На Главную">
                 </a>
             </div>
-            <img class="catalog-img-absolute-top catalog-img-absolute-top--team" src="<?php bloginfo('template_url'); ?>/assets/img/catalog--absolute.png" alt="">
+            <img class="catalog-img-absolute-top <? if( is_shop() ):  else: echo 'catalog-img-absolute-top--team'; endif; ?>" src="<?php bloginfo('template_url'); ?>/assets/img/catalog--absolute.png" alt="">
         </div>
         <div class="header__right">
             <nav class="menu">
@@ -29,7 +29,7 @@
                         <a class="menu__list__link" href="<?php echo get_page_link(135)?>">Наши проекты</a>
                     </li>
                     <li class="menu__list__items menu-open-shop">
-                        <a class="menu__list__link" href="#">Онлайн магазин</a>
+                        <a class="menu__list__link" href="<?php echo get_page_link(299)?>">Онлайн магазин</a>
                     </li>
                     <li class="menu__list__items menu-open-donat">
                         <a class="menu__list__link" href="<?php echo get_page_link(24)?>">Донаты</a>

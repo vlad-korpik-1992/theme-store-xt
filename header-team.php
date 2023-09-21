@@ -34,7 +34,7 @@
                         <a class="menu__list__link" href="<?php echo get_page_link(135)?>">Наши проекты</a>
                     </li>
                     <li class="menu__list__items menu-open-shop">
-                        <a class="menu__list__link" href="#">Онлайн магазин</a>
+                        <a class="menu__list__link" href="<?php echo get_page_link(299)?>">Онлайн магазин</a>
                     </li>
                     <li class="menu__list__items menu-open-donat">
                         <a class="menu__list__link" href="<?php echo get_page_link(24)?>">Донаты</a>
