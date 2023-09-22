@@ -47,7 +47,43 @@ $(document).ready(function(){
         $(".menu-modal--donat").removeClass("menu-modal--open");
     });
   }
+  $('span:contains("Товары")').html('Онлайн-магазин');
+
+  $("a[href*='product-category']").each(function() { 
+      this.href = this.href.replace(/product-category/, 
+         "shop");
+   });
+   $("a[href*='misc']").each(function() { 
+    this.href = this.href.replace(/misc/, 
+       "");
+  });
+  $("span[itemprop='name']").each(function() { 
+      this.innerHTML = this.innerHTML.replace('Misc', 'Онлайн-магазин');
+  });
 });
+
+$(function() {
+  $("span[itemprop='itemListElement']").each(function(){ 
+		let innerHtml = this.innerHTML;
+		if(innerHtml == 'Онлайн-магазин'){
+			let blockParentBreadcrumbs = $(this);
+			blockParentBreadcrumbs.next('.kb_sep').remove();
+			blockParentBreadcrumbs.remove();
+		}
+  });
+  /* Выбор вариативного товара */
+  $(document).on('click', '.select-size', function(e) {
+		e.preventDefault();
+    $('.card__box__size__link--active').removeClass('card__box__size__link--active');
+    $(this).addClass('card__box__size__link--active');
+    let dataCart = $(this).attr('data-cart');
+    let newHref = `?add-to-cart=${ dataCart }`;
+    $("a.card__box__btn").attr("href", newHref);
+    $("a.card__box__btn").attr('data-product_id', dataCart)
+  })
+  /* Выбор вариативного товара */
+})
+
 /* Hover Menu */ 
 
 $(document).ready(function() {
@@ -120,20 +156,20 @@ $(document).ready(function() {
       {
         breakpoint: 991,
         settings: {
-          slidesToShow: 5,
+          slidesToShow: 3,
         }
       },
       {
         breakpoint: 767,
         settings: {
-          slidesToShow: 4,
+          slidesToShow: 3,
         }
       },
       {
         breakpoint: 575,
         settings: {
           dots: false,
-          slidesToShow: 3,
+          slidesToShow: 2,
           rows: 1,
           centerMode: false
         }

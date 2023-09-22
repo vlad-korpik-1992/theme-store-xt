@@ -12,8 +12,8 @@
 <body>
     <header class="header <? if( is_singular( 'events' ) ): echo 'header--event-page'; endif; ?>">
         <div class="wrapper">
-            <div class="header__top">
-                <a class="logo" href="/">
+            <div class="header__top <? if( is_product() ): echo 'header__top--cart'; endif; ?>">
+                <a class="logo <? if( is_product() ): echo 'logo--cart'; endif; ?>" href="/">
                     <?if( is_singular( 'events' ) ):?>
                         <img id="logo" src="<?php bloginfo('template_url'); ?>/assets/img/logo--white.svg" alt="На Главную">
                     <?

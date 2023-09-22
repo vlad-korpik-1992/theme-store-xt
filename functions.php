@@ -210,6 +210,17 @@ function xt_scripts() {
 
 		wp_enqueue_script('main-archive-events-script');
 	}
+
+	if( is_product() ){
+		wp_deregister_script('main-script');
+		wp_register_script('slick-script', get_template_directory_uri() . '/assets/js/slick.min.js', array(), null, true);
+
+		wp_enqueue_script('slick-script');
+
+		wp_register_script('main-slider-script', get_template_directory_uri() . '/assets/js/main-cart.js', array(), null, true);
+
+		wp_enqueue_script('main-slider-script');
+	}
 }
 add_action( 'wp_enqueue_scripts', 'xt_scripts' );
 

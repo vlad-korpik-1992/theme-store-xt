@@ -303,78 +303,39 @@
             <div class="section__title">
                 <h2><? echo the_field('home-our-products'); ?></h2>
             </div>
-            <div class="top__slider">
-                <div class="top__slider__items">
-                    <a class="top__slider__content" href="#">
-                        <img src="<?php bloginfo('template_url'); ?>/assets/img/top__product.png" alt="">
-                        <h3 class="top__slider__title">Майка</h3>
-                        <p class="top__slider__price">$4.93</p>
-                    </a>
+            <?
+                $args = array(
+                    'post_type' => 'product',
+                    'numberposts' => -1,
+                    'order' => 'DESC',
+                    'orderby'   => 'meta_value',
+                    'suppress_filters' => true,
+                    'post_status' => 'publish',
+                    'meta_query' => array(
+                        'relation' => 'AND',
+                            array(
+                                'key' => 'product-display-home',
+                                'value' => '1',
+                        ),
+                    ),
+                );
+                $query = new WP_Query( $args );
+            ?>
+            <? if ( $query->have_posts() ) : ?>
+                <div class="top__slider">
+                    <?while ( $query->have_posts() ) : $query->the_post();?>
+                        <div class="top__slider__items">
+                            <a class="top__slider__content" href="<?php echo get_permalink($posts['ID']); ?>">
+                                <img src="<?php echo get_the_post_thumbnail_url( get_the_ID(), 'full' )?>" alt="">
+                                <h3 class="top__slider__title"><?php echo get_the_title()?></h3>
+                                <p class="top__slider__price">$<?php echo $product->get_price(); ?></p>
+                            </a>
+                        </div>
+                    <?php endwhile;  wp_reset_postdata(); ?>
                 </div>
-                <div class="top__slider__items">
-                    <a class="top__slider__content" href="#">
-                        <img src="<?php bloginfo('template_url'); ?>/assets/img/top__product.png" alt="">
-                        <h3 class="top__slider__title">Майка</h3>
-                        <p class="top__slider__price">$4.93</p>
-                    </a>
-                </div>
-                <div class="top__slider__items">
-                    <a class="top__slider__content" href="#">
-                        <img src="<?php bloginfo('template_url'); ?>/assets/img/top__product.png" alt="">
-                        <h3 class="top__slider__title">Майка</h3>
-                        <p class="top__slider__price">$4.93</p>
-                    </a>
-                </div>
-                <div class="top__slider__items">
-                    <a class="top__slider__content" href="#">
-                        <img src="<?php bloginfo('template_url'); ?>/assets/img/top__product.png" alt="">
-                        <h3 class="top__slider__title">Майка</h3>
-                        <p class="top__slider__price">$4.93</p>
-                    </a>
-                </div>
-                <div class="top__slider__items">
-                    <a class="top__slider__content" href="#">
-                        <img src="<?php bloginfo('template_url'); ?>/assets/img/top__product.png" alt="">
-                        <h3 class="top__slider__title">Майка</h3>
-                        <p class="top__slider__price">$4.93</p>
-                    </a>
-                </div>
-                <div class="top__slider__items">
-                    <a class="top__slider__content" href="#">
-                        <img src="<?php bloginfo('template_url'); ?>/assets/img/top__product.png" alt="">
-                        <h3 class="top__slider__title">Майка</h3>
-                        <p class="top__slider__price">$4.93</p>
-                    </a>
-                </div>
-                <div class="top__slider__items">
-                    <a class="top__slider__content" href="#">
-                        <img src="<?php bloginfo('template_url'); ?>/assets/img/top__product.png" alt="">
-                        <h3 class="top__slider__title">Майка</h3>
-                        <p class="top__slider__price">$4.93</p>
-                    </a>
-                </div>
-                <div class="top__slider__items">
-                    <a class="top__slider__content" href="#">
-                        <img src="<?php bloginfo('template_url'); ?>/assets/img/top__product.png" alt="">
-                        <h3 class="top__slider__title">Майка</h3>
-                        <p class="top__slider__price">$4.93</p>
-                    </a>
-                </div>
-                <div class="top__slider__items">
-                    <a class="top__slider__content" href="#">
-                        <img src="<?php bloginfo('template_url'); ?>/assets/img/top__product.png" alt="">
-                        <h3 class="top__slider__title">Майка</h3>
-                        <p class="top__slider__price">$4.93</p>
-                    </a>
-                </div>
-                <div class="top__slider__items">
-                    <a class="top__slider__content" href="#">
-                        <img src="<?php bloginfo('template_url'); ?>/assets/img/top__product.png" alt="">
-                        <h3 class="top__slider__title">Майка</h3>
-                        <p class="top__slider__price">$4.93</p>
-                    </a>
-                </div>
-            </div>
+            <?else : ?>
+                    <p class="top--message"><?php esc_html_e( 'Товары отсутствуют' ); ?></p>
+            <?php endif; ?>
         </div>
     </section>
     <? if (get_field('home-top-video-img') != '' && get_field('home-top-video-link') != ''):?>
