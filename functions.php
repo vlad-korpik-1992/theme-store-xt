@@ -316,6 +316,21 @@ if ( defined( 'JETPACK__VERSION' ) ) {
 	require get_template_directory() . '/inc/jetpack.php';
 }
 
+add_theme_support('woocommerce');
+
+/*Ajaxify header cart items count in Woocommerce*/
+
+add_filter( 'woocommerce_add_to_cart_fragments', 'wc_refresh_mini_cart_count');
+function wc_refresh_mini_cart_count($fragments){
+    ob_start();
+    $items_count = WC()->cart->get_cart_contents_count();
+    ?>
+    <div id="mini-cart-count"><?php echo $items_count ? $items_count : '0'; ?></div>
+    <?php
+        $fragments['#mini-cart-count'] = ob_get_clean();
+    return $fragments;
+}
+
 /**
  * Load WooCommerce compatibility file.
  */

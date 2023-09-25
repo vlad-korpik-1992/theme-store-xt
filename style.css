@@ -328,9 +328,25 @@ section{
     height: 32px;
 }
 .basket{
+    position: relative;
     padding-top: 30px;
     display: flex;
     justify-content: center;
+}
+.bascket__col{
+    position: absolute;
+    bottom: 50px;
+    right: 20%;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #000;
+    border-radius: 50%;
+    font-size: 14px;
+    line-height: normal;
+    color: #fff;
 }
 .social__icon--basket{
     width: 64px;    
@@ -1791,6 +1807,168 @@ p.video__items__title{
     color: #fff;
     border-radius: 10px;
 }
+a.cart-empty__link{
+    display: block;
+    padding: 20px;
+    width: 100%;
+    max-width: fit-content;
+    color: #FFF;
+    font-family: 'Futura PT Book';
+    font-size: 16px;
+    line-height: normal;
+    transition: 0.3s all;
+    background-image: url(assets/img/btn__bg.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    text-decoration: none;
+    margin-top: 40px;
+}
+a.cart-empty__link:hover{
+    background-image: url(assets/img/btn__bg--hover.png);
+}
+/* Cart */
+.woocommerce-order{
+    font-size: 16px;
+    line-height: 160%;
+    padding-bottom: 5px;
+}
+.woocommerce .cart-collaterals .cart_totals h2{
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 21px;
+    color: #171717;
+    padding-bottom: 16px;
+}
+.cart_totals > table > tbody > tr.cart-subtotal {
+    display: none;
+}
+.woocommerce table.shop_table tbody th, .woocommerce table.shop_table tfoot td, .woocommerce table.shop_table tfoot th{
+    border: none;
+    font-size: 14px;
+    font-weight: 700;
+}
+.woocommerce table.shop_table td{
+    border: none;
+}
+.woocommerce table.shop_table th{
+    padding: 0;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 120%;
+    text-align: left;
+}
+.woocommerce table.shop_table td{
+    padding: 20px 5px;
+}
+.woocommerce table.shop_table td a{
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 120%;
+    color: #000;
+}
+.woocommerce table.shop_table td.product-remove a{
+    color: #F44336;
+}
+.woocommerce-Price-amount{
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 120%;
+    color: #000;
+}
+.cart_totals > table > tbody > tr.order-total{
+    font-size: 20px;
+}
+.woocommerce table.shop_table{
+    margin: 0;
+    border: none;
+    width: 100%;
+}
+.woocommerce a.button.alt {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #000 !important;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 17px;
+    padding: 16px 24px !important;
+    border: 1px solid #000;
+    text-decoration: none;
+    max-width: 215px;
+    margin-top: 30px;
+    cursor: pointer;
+    transition: 0.3s all;
+}
+.woocommerce a.button.alt:hover{
+    background-color: #000;
+    color: #fff !important;
+}
+.quantity > input[type="number"] {
+    font-size: 16px;
+    line-height: 150%;
+    border: 1px solid #000000;
+    width: 60% !important;
+    text-align: center !important;
+    padding: 5px;
+}
+.woocommerce button.button{
+    float: right !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #000 !important;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 17px;
+    padding: 16px 24px !important;
+    border: 1px solid #000;
+    margin-top: 30px;
+    cursor: pointer;
+    transition: 0.3s all;
+}
+.woocommerce button.button:hover{
+    background-color: #000;
+    color: #fff !important;
+}
+.size-woocommerce_thumbnail{
+    max-width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+tr.order-total th{
+    font-weight: 700 !important;
+    font-size: 24px !important;
+    line-height: 21px !important;
+    width: 241px;
+}
+tr.order-total span.woocommerce-Price-amount{
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 21px;
+}
+.woocommerce table.shop_table:before{
+    width: 0;
+    height: 0;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+.woocommerce-shipping-totals{
+    display: none;
+}
+.woocommerce-message, .woocommerce-info, .woocommerce-error, .woocommerce-noreviews, p.no-comments{
+    background-color: #000 !important;
+    clear: both;
+    color: #fff;
+    margin-bottom: 40px;
+    padding: 15px;
+}
+.woocommerce .cart-collaterals .cart_totals h2{
+    display: none;
+}
+/* Cart */
 @media (min-width: 768px) {
     .video__items__img--maxw{
         max-width: 51%;
@@ -1966,8 +2144,8 @@ p.video__items__title{
     }
     .menu__btn {
 		position: relative;
-		width: 30px;
-        height: 30px;
+		width: 25px;
+        height: 25px;
         background-color: transparent;
         cursor: pointer;
 		padding-right: 15px;
@@ -2042,15 +2220,26 @@ p.video__items__title{
         flex-direction: row-reverse;
     }
     .social{
+        align-items: center;
         flex-direction: row;
         padding-top: 0px;
         gap: 10px;
+    }
+    .social__items{
+        display: flex;
     }
     .basket{
         padding-top: 0;
         margin-top: -8px;
         width: 32px;
         height: 41px;
+    }
+    .bascket__col{
+        bottom: 16px;
+        right: 0%;
+        width: 16px;
+        height: 16px;
+        font-size: 12px;
     }
     .social__icon--basket{
         width: 48px;    
@@ -2473,6 +2662,33 @@ p.video__items__title{
     .single{
         padding-top: 60px;
     }
+    .woocommerce-cart-form__cart-item{
+        position: relative;
+    }
+    .product-remove{
+        position: absolute;
+        right: 0;
+        padding: 0;
+        top: 0;
+    }
+    table.shop_table_responsive tr td.product-thumbnail{
+        text-align: left;
+    }
+    .woocommerce table.shop_table td{
+        padding: 15px 0px;
+    }
+    table.shop_table_responsive tr td.product-thumbnail::before{
+        content: '';
+    }
+    .woocommerce button.button{
+        margin-bottom: 30px;
+    }
+    .woocommerce table.shop_table td a, .woocommerce-Price-amount{
+        font-size: 18px;
+    }
+    .quantity > input[type="number"]{
+        font-size: 14px;
+    }
 }
 @media (max-width: 575px){
     .hero{
@@ -2502,10 +2718,20 @@ p.video__items__title{
         flex: 0 0 100%;
         max-width: 100%;
     }
+    .social{
+        padding-top: 5px;
+    }
+    .social__items__link{
+        display: flex;
+    }
     .basket{
-        margin-top: -13px;
+        margin-top: -10px;
         width: 22px;
         height: 22px;
+    }
+    .bascket__col{
+        bottom: -5px;
+        right: -25%;
     }
     .project{
         padding-bottom: 160px;
@@ -2706,9 +2932,6 @@ p.video__items__title{
     }
 }
 @media (max-width: 374px){
-    .logo img{
-        width: 30px;
-    }
     .page-title {
         font-size: 38px;
     }

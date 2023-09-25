@@ -95,7 +95,11 @@
                 </div>
             </div>
             <div class="basket">
-                <a class="backet__link" href="#">
+                <a class="backet__link" href="<?php echo get_page_link(300)?>">
+                    <div class="bascket__col">
+                        <?$items_count = WC()->cart->get_cart_contents_count();?>
+                        <div id="mini-cart-count" class="bascket__num"><?php echo $items_count ? $items_count : '0'; ?></div>
+                    </div>
                     <svg class="social__icon--basket" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 62 62" fill="none">
                         <path d="M20.3334 40.3334C20.3334 41.0406 20.6143 41.7189 21.1144 42.219C21.6145 42.7191 22.2928 43 23 43C23.7073 43 24.3856 42.7191 24.8857 42.219C25.3858 41.7189 25.6667 41.0406 25.6667 40.3334C25.6667 39.6261 25.3858 38.9478 24.8857 38.4477C24.3856 37.9476 23.7073 37.6667 23 37.6667C22.2928 37.6667 21.6145 37.9476 21.1144 38.4477C20.6143 38.9478 20.3334 39.6261 20.3334 40.3334Z" stroke="#7A7A7A" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"/>
                         <path d="M35 40.3334C35 41.0406 35.281 41.7189 35.781 42.219C36.2811 42.7191 36.9594 43 37.6667 43C38.3739 43 39.0522 42.7191 39.5523 42.219C40.0524 41.7189 40.3333 41.0406 40.3333 40.3334C40.3333 39.6261 40.0524 38.9478 39.5523 38.4477C39.0522 37.9476 38.3739 37.6667 37.6667 37.6667C36.9594 37.6667 36.2811 37.9476 35.781 38.4477C35.281 38.9478 35 39.6261 35 40.3334Z" stroke="#7A7A7A" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"/>
