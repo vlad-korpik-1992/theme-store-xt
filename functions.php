@@ -331,6 +331,166 @@ function wc_refresh_mini_cart_count($fragments){
     return $fragments;
 }
 
+/* Add Remove input page checkout */
+
+add_filter( 'woocommerce_checkout_fields' , 'custom_override_checkout_unset_company' );
+function custom_override_checkout_unset_company( $fields ) {
+	unset($fields['billing']['billing_company']);
+	return $fields;
+}
+
+add_filter( 'woocommerce_checkout_fields' , 'custom_override_checkout_unset_email' );
+function custom_override_checkout_unset_email( $fields ) {
+	unset($fields['billing']['billing_email']);
+	return $fields;
+}
+
+add_filter( 'woocommerce_checkout_fields' , 'custom_override_checkout_unset_postcode' );
+function custom_override_checkout_unset_postcode( $fields ) {
+	unset($fields['billing']['billing_postcode']);
+	return $fields;
+}
+
+add_filter( 'woocommerce_checkout_fields' , 'custom_override_checkout_unset_address' );
+function custom_override_checkout_unset_address( $fields ) {
+	unset($fields['billing']['billing_address_2']);
+	return $fields;
+}
+
+add_filter( 'woocommerce_checkout_fields' , 'custom_override_checkout_unset_address_1' );
+function custom_override_checkout_unset_address_1( $fields ) {
+	unset($fields['billing']['billing_address_1']);
+	return $fields;
+}
+
+add_filter( 'woocommerce_checkout_fields' , 'custom_override_checkout_unset_address_2' );
+function custom_override_checkout_unset_address_2( $fields ) {
+	unset($fields['billing']['billing_state']);
+	return $fields;
+}
+
+add_filter( 'woocommerce_checkout_fields' , 'custom_override_checkout_unset_shipping' );
+function custom_override_checkout_unset_shipping( $fields ) {
+	unset($fields['shipping']['shipping_address_1']);
+	return $fields;
+}
+
+add_filter( 'woocommerce_checkout_fields' , 'custom_override_checkout_fields' );
+function custom_override_checkout_fields( $fields ) {
+	 $fields["billing"]["billing_country"]['label'] = 'Страна';
+	 $fields["billing"]["billing_city"]['label'] = 'Город (населенный пункт)';
+     return $fields;
+}
+
+add_filter('woocommerce_default_address_fields', 'override_default_address_checkout_fields', 20, 1);
+function override_default_address_checkout_fields( $address_fields ) {
+    $address_fields['first_name']['placeholder'] = 'Укажите имя';
+    $address_fields['last_name']['placeholder'] = 'Укажите фамилию';
+    $address_fields['address_1']['placeholder'] = 'Укажите город';
+    return $address_fields;
+}
+
+add_filter( 'woocommerce_checkout_fields' , 'override_billing_checkout_fields', 20, 1 );
+function override_billing_checkout_fields( $fields ) {
+	$fields['billing']['billing_city']['placeholder'] = 'Укажите город / населенный пункт';
+    $fields['billing']['billing_phone']['placeholder'] = 'Укажите номер телефона';
+    return $fields;
+}
+
+function update_woo_checkout_fields( $fields ) {
+
+    $fields['billing']['billing_country'] = [
+        'type' => 'select',
+        'required' => 'true',
+		'class' => array('input-text  form-row-wide'),
+        'label' => __( 'Страна', 'woocommerce' ),
+        'options' => [
+            'PL' => __( 'Poland', 'woocommerce' ),
+			'LT' => __( 'Lithuania', 'woocommerce' ),
+			'LV' => __( 'Latvia', 'woocommerce' ),
+        ],
+    ];
+
+    return $fields;
+}
+
+add_filter( 'woocommerce_checkout_fields', 'update_woo_checkout_fields' );
+
+add_action( 'woocommerce_before_order_notes', 'my_custom_checkout_field' );
+
+function my_custom_checkout_field( $checkout ) {
+
+	echo '<div class="my_field_street">';
+
+    woocommerce_form_field( 'my_field_street', array(
+        'type'          => 'text',
+		'required'		=> true,
+        'class'         => array('my-field-class form-row-wide'),
+        'label'         => __('Улица'),
+        'placeholder'   => __('Укажите улицу'),
+        ), $checkout->get_value( 'my_field_street' ));
+
+    echo '</div>';
+
+	echo '<div class="my_field_room">';
+
+	woocommerce_form_field( 'my_field_house_number', array(
+        'type'          => 'text',
+		'required'		=> true,
+        'class'         => array('my-field-class form-row-wide'),
+        'label'         => __('Номер дома'),
+        'placeholder'   => __('Укажите номер дома'),
+        ), $checkout->get_value( 'my_field_house_number' ));
+
+    woocommerce_form_field( 'my_field_room', array(
+        'type'          => 'text',
+		'required'		=> false,
+        'class'         => array('my-field-class form-row-wide'),
+        'label'         => __('Квартира'),
+        'placeholder'   => __('Укажите квартиру'),
+        ), $checkout->get_value( 'my_field_room' ));
+
+    echo '</div>';
+
+}
+
+add_action( 'woocommerce_checkout_update_order_meta', 'my_custom_checkout_field_update_order_meta' );
+
+function my_custom_checkout_field_update_order_meta( $order_id ) {
+	if ( ! empty( $_POST['my_field_street'] ) ) {
+        update_post_meta( $order_id, 'Улица', sanitize_text_field( $_POST['my_field_street'] ) );
+    }
+	if ( ! empty( $_POST['my_field_house_number'] ) ) {
+        update_post_meta( $order_id, 'Номер дома', sanitize_text_field( $_POST['my_field_house_number'] ) );
+    }
+	if ( ! empty( $_POST['my_field_room'] ) ) {
+        update_post_meta( $order_id, 'Квартира', sanitize_text_field( $_POST['my_field_room'] ) );
+    }
+}
+
+add_action( 'woocommerce_admin_order_data_after_billing_address', 'my_custom_checkout_field_display_admin_order_meta', 10, 1 );
+
+function my_custom_checkout_field_display_admin_order_meta($order){
+	echo '<p><strong>'.__('Улица').':</strong> ' . get_post_meta( $order->id, 'Улица', true ) . '</p>';
+	echo '<p><strong>'.__('Номер дома').':</strong> ' . get_post_meta( $order->id, 'Номер дома', true ) . '</p>';
+	echo '<p><strong>'.__('Квартира').':</strong> ' . get_post_meta( $order->id, 'Квартира', true ) . '</p>';
+}
+
+function sort_fields_billing($fields) {
+
+	$fields["billing"]["billing_first_name"]["priority"] = 1;
+	$fields["billing"]["billing_last_name"]["priority"] = 2;
+	$fields["billing"]["billing_phone"]["priority"] = 3;
+	$fields["billing"]["billing_country"]["priority"] = 4;
+	$fields["billing"]["billing_city"]["priority"] = 5;
+	
+	return $fields;
+	
+}
+
+add_filter("woocommerce_checkout_fields", "sort_fields_billing");
+
+
 /**
  * Load WooCommerce compatibility file.
  */
