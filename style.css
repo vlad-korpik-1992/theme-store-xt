@@ -1827,6 +1827,12 @@ a.cart-empty__link{
 a.cart-empty__link:hover{
     background-image: url(assets/img/btn__bg--hover.png);
 }
+.work__img--absolute{
+    position: absolute;
+    top: 40%;
+    left: 0;
+    max-width: 220px;
+}
 /* Cart */
 .woocommerce-order{
     font-size: 16px;

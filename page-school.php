@@ -99,6 +99,7 @@
         </div>
     </section>
     <section class="work section--full">
+        <img class="work__img--absolute" loading="lazy" src="<?php bloginfo('template_url'); ?>/assets/img/work-section--full-absolute-left.png" alt="<? echo the_field('school-title');?>">
         <div class="wrapper wrapper--full">
             <div class="section__title">
                 <h2><? echo the_field('school-title');?></h2>
